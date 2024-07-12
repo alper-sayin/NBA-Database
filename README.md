@@ -61,37 +61,37 @@ to update the current database. That's why I used flask-migrate package in this 
 ## Usage & Screenshots
 ![Description](images/welcome.PNG)
 Homepage
-![Description](images/teams.png)
+![Description](images/teams.PNG)
 Teams Section
-![Description](images/players1.png)
+![Description](images/players1.PNG)
 Players section. Players are grouped by surnames.
-![Description](images/players2.png)
+![Description](images/players2.PNG)
 Switching radio button to filter only active players
-![Description](images/players3.png)
+![Description](images/players3.PNG)
 Search bar is searching for the word both in name and surname
-![Description](images/playerdetails.png)
+![Description](images/playerdetails.PNG)
 Player details section
-![Description](images/careerstats.png)
+![Description](images/careerstats.PNG)
 Career stats section
-![Description](images/careerstats2.png)
+![Description](images/careerstats2.PNG)
 You can use “toggle graph” if you want to view some essential stats in graph
-![Description](images/downloaddatabase.png)
+![Description](images/downloaddatabase.PNG)
 Download database section. Functionality to fetch database in both excel, csv or json(API) formats
-![Description](images/json.png)
+![Description](images/json.PNG)
 Json(API)
-![Description](images/excel.png)
+![Description](images/excel.PNG)
 Excel(.xlsx)
-![Description](images/csv.png)
+![Description](images/csv.PNG)
 CSV(Pycharm view)
 
 ## Database Structure
-![Description](images/sqlite.png)
+![Description](images/sqlite.PNG)
 Database structure and tables in SQLite 
-![Description](images/sqlite2.png)
+![Description](images/sqlite2.PNG)
 Teams table in SQLite
-![Description](images/sqlite3.png)
+![Description](images/sqlite3.PNG)
 Players table in SQLite-1
-![Description](images/sqlite4.png)
+![Description](images/sqlite4.PNG)
 Players table in SQLite-2
 ## API Endpoints
 
