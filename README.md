@@ -99,12 +99,16 @@ CSV(Pycharm view)
 ## Database Structure
 ![Description](images/sqlite.PNG)
 Database structure and tables in SQLite 
+
 ![Description](images/sqlite2.PNG)
 Teams table in SQLite
+
 ![Description](images/sqlite3.PNG)
 Players table in SQLite-1
+
 ![Description](images/sqlite4.PNG)
 Players table in SQLite-2
+
 ## API Endpoints
 
 - nba_api.stats.static/players
