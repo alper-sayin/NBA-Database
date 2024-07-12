@@ -1,4 +1,4 @@
-# NBA-Database
+# NBA Database
 NBA Database- A Flask-based Web Application
 ## Table of Contents
 
