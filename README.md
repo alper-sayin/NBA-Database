@@ -59,13 +59,40 @@ But between seeding the database and updating database models, you should apply:
 to update the current database. That's why I used flask-migrate package in this project. But you don't need to use these flask CLI commands in final code in order to test out current functionality. If you want to extend current database after creation then you should apply these flask CLI commands.
 
 ## Usage & Screenshots
-
-[Include your screenshots here with appropriate descriptions]
+![Description](welcome.png)
+Homepage
+![Description](teams.png)
+Teams Section
+![Description](players1.png)
+Players section. Players are grouped by surnames.
+![Description](players2.png)
+Switching radio button to filter only active players
+![Description](players3.png)
+Search bar is searching for the word both in name and surname
+![Description](playerdetails.png)
+Player details section
+![Description](careerstats.png)
+Career stats section
+![Description](careerstats2.png)
+You can use “toggle graph” if you want to view some essential stats in graph
+![Description](downloaddatabase.png)
+Download database section. Functionality to fetch database in both excel, csv or json(API) formats
+![Description](json.png)
+Json(API)
+![Description](excel.png)
+Excel(.xlsx)
+![Description](csv.png)
+CSV(Pycharm view)
 
 ## Database Structure
-
-[Include your database structure screenshots here with appropriate descriptions]
-
+![Description](sqlite.png)
+Database structure and tables in SQLite 
+![Description](sqlite2.png)
+Teams table in SQLite
+![Description](sqlite3.png)
+Players table in SQLite-1
+![Description](sqlite4.png)
+Players table in SQLite-2
 ## API Endpoints
 
 - nba_api.stats.static/players
