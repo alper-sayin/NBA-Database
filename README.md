@@ -49,14 +49,14 @@ After opening the terminal in your IDE, you should apply:
 
 ***I separated flask CLI commands for seeding the players table on purpose. So you can arbitrarily add the desired information.
 
-Also you may want to extend columns of the current players or teams tables after the initial database creation. In this case, you should update database models in code snippet and then you should create other flask CLI commands for seeding the database.
+Also you may want to add more columns of the current players or teams tables after the initial database creation. In this case, you should update database models in code snippet and then you should create other flask CLI commands for seeding the database.
 
 But between seeding the database and updating database models, you should apply:
 
 - `flask migrate`
 - `flask upgrade`
 
-to update the current database. That's why I used flask-migrate package in this project. But you don't need to use these flask CLI commands in final code in order to test out current functionality. If you want to extend current database **___after creation___** then you should apply these flask CLI commands.
+to update the current database. That's why I used flask-migrate package in this project. But you don't need to use these flask CLI commands in final code in order to test out current functionality. If you want to add more columns or add more tables to current database **___after creation___** then you should apply these flask CLI commands.
 
 
 ## Usage & Screenshots
