@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Teams</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .teams-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .team-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .team-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .team-info {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('welcome') }}" class="button">Back to Homepage</a>
+    <h1>NBA Teams</h1>
+    <div class="teams-container" id="teamsContainer"></div>
+
+    <script>
+        const teamsData = {{ teams | tojson | safe }};
+        const teamsContainer = document.getElementById('teamsContainer');
+
+        teamsData.forEach(team => {
+            const teamCard = document.createElement('div');
+            teamCard.classList.add('team-card');
+            teamCard.innerHTML = `
+                <div class="team-name">${team.full_name}</div>
+                <div class="team-info">
+                    <p>Nickname: ${team.nickname}</p>
+                    <p>City: ${team.city}, ${team.state}</p>
+                    <p>Abbreviation: ${team.abbreviation}</p>
+                    <p>Founded: ${team.year_founded}</p>
+                </div>
+            `;
+            teamsContainer.appendChild(teamCard);
+        });
+    </script>
+</body>
+</html>

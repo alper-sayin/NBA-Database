@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.full_name }} - Career Stats</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #0052a3;
+        }
+
+        #plotly-graph {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ player.full_name }} - Career Stats</h1>
+    <table>
+        <tr>
+            <th>GP</th>
+            <th>GS</th>
+            <th>MIN</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FG_PCT</th>
+            <th>FG3M</th>
+            <th>FG3A</th>
+            <th>FG3_PCT</th>
+            <th>FTM</th>
+            <th>FTA</th>
+            <th>FT_PCT</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>TOV</th>
+            <th>PF</th>
+            <th>PTS</th>
+        </tr>
+        <tr>
+            <td>{{ player.get("GP", 'N/A') }}</td>
+            <td>{{ player.get("GS", 'N/A') }}</td>
+            <td>{{ player.get("MIN", 'N/A') }}</td>
+            <td>{{ player.get("FGM", 'N/A') }}</td>
+            <td>{{ player.get("FGA", 'N/A') }}</td>
+            <td>{{ player.get("FG_PCT", 'N/A') }}</td>
+            <td>{{ player.get("FG3M", 'N/A') }}</td>
+            <td>{{ player.get("FG3A", 'N/A') }}</td>
+            <td>{{ player.get("FG3_PCT", 'N/A') }}</td>
+            <td>{{ player.get("FTM", 'N/A') }}</td>
+            <td>{{ player.get("FTA", 'N/A') }}</td>
+            <td>{{ player.get("FT_PCT", 'N/A') }}</td>
+            <td>{{ player.get("OREB", 'N/A') }}</td>
+            <td>{{ player.get("DREB", 'N/A') }}</td>
+            <td>{{ player.get("REB", 'N/A') }}</td>
+            <td>{{ player.get("AST", 'N/A') }}</td>
+            <td>{{ player.get("STL", 'N/A') }}</td>
+            <td>{{ player.get("BLK", 'N/A') }}</td>
+            <td>{{ player.get("TOV", 'N/A') }}</td>
+            <td>{{ player.get("PF", 'N/A') }}</td>
+            <td>{{ player.get("PTS", 'N/A') }}</td>
+        </tr>
+    </table>
+
+    <a href="{{ url_for('player_details', player_id=player.id) }}" class="button">Back to Player Details</a>
+    <button id="toggleGraphBtn" class="button">Toggle Graph</button>
+
+    <div id="plotly-graph"></div>
+
+    <script>
+        var graphVisible = false;
+        var graphDiv = document.getElementById('plotly-graph');
+        var toggleBtn = document.getElementById('toggleGraphBtn');
+
+        toggleBtn.onclick = function() {
+            if (graphVisible) {
+                graphDiv.style.display = 'none';
+                graphVisible = false;
+                toggleBtn.textContent = 'Show Graph';
+            } else {
+                graphDiv.style.display = 'block';
+                graphVisible = true;
+                toggleBtn.textContent = 'Hide Graph';
+
+                if (!graphDiv.innerHTML) {
+                    var graphJSON = {{ graphJSON | safe }};
+                    Plotly.newPlot('plotly-graph', graphJSON.data, graphJSON.layout);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, .radio-group {
+            margin-bottom: 20px;
+        }
+        .letter-group {
+            margin-bottom: 20px;
+        }
+        .letter-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #333;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+<a href="{{ url_for('welcome') }}" class="button">Back to Homepage</a>
+    <h1>Players List</h1>
+    <div class="radio-group">
+        <input type="radio" id="showAll" name="playerFilter" value="all" {% if not show_active %}checked{% endif %}>
+        <label for="showAll">Show All Players</label>
+        <input type="radio" id="showActive" name="playerFilter" value="active" {% if show_active %}checked{% endif %}>
+        <label for="showActive">Show Active Players Only</label>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search players...">
+    <div id="playersContainer">
+        {% for letter, players in grouped_players.items() %}
+            <div class="letter-group" data-letter="{{ letter }}">
+                <h2 class="letter-header">{{ letter }}</h2>
+                <ul>
+                    {% for player in players %}
+                        <li><a href="{{ url_for('player_details', player_id=player.id) }}">{{ player.last_name }}, {{ player.first_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const playersContainer = document.getElementById('playersContainer');
+        const groupedPlayers = {{ grouped_players|tojson|safe }};
+        const radioButtons = document.querySelectorAll('input[name="playerFilter"]');
+
+        function filterPlayers() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const showActive = document.getElementById('showActive').checked;
+
+            for (const [letter, players] of Object.entries(groupedPlayers)) {
+                const letterGroup = playersContainer.querySelector(`[data-letter="${letter}"]`);
+                const filteredPlayers = players.filter(player =>
+                    `${player.last_name}, ${player.first_name}`.toLowerCase().includes(searchTerm) &&
+                    (!showActive || player.is_active)
+                );
+
+                if (filteredPlayers.length > 0) {
+                    letterGroup.style.display = 'block';
+                    letterGroup.querySelector('ul').innerHTML = filteredPlayers.map(player =>
+                        `<li><a href="/player_details/${player.id}">${player.last_name}, ${player.first_name}</a></li>`
+                    ).join('');
+                } else {
+                    letterGroup.style.display = 'none';
+                }
+            }
+        }
+
+        searchInput.addEventListener('input', filterPlayers);
+        radioButtons.forEach(radio => radio.addEventListener('change', () => {
+            const showActive = document.getElementById('showActive').checked;
+            window.location.href = `/players?show_active=${showActive}`;
+        }));
+
+        filterPlayers();
+    </script>
+</body>
+</html>

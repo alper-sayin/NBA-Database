@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to NBA Database</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Tabs styles */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      background-color: #ddd;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab.active {
+      background-color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to NBA Database</h1>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active">Home</button>
+    <a href="{{ url_for('teams') }}"><button class="tab">Teams</button></a>
+    <a href="{{ url_for('players') }}"><button class="tab">Players</button></a>
+    <a href="{{ url_for('download_database') }}"><button class="tab">Download Player Database</button></a>
+  </div>
+
+  <script>
+    // JavaScript to handle tab switching
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs and tab contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active class to the clicked tab and its corresponding content
+        tab.classList.add('active');
+        tabContents[index].classList.add('active');
+
+        // If the "Players" tab is clicked, load the players.html content
+        if (index === 2) {
+          fetch('/players')
+            .then(response => response.text())
+            .then(html => {
+              tabContents[2].innerHTML = html;
+            })
+            .catch(error => {
+              console.error('Error fetching players content:', error);
+            });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

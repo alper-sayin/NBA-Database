@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.full_name }} - Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ player.full_name }}</h1>
+    <p><span class="label">First Name:</span> {{ player.first_name }}</p>
+    <p><span class="label">Last Name:</span> {{ player.last_name }}</p>
+    <p><span class="label">Height:</span> {{ player.height }}</p>
+    <p><span class="label">Is Active:</span> {{ 'Yes' if player.is_active else 'No' }}</p>
+    <p><span class="label">Jersey:</span> {{ player.jersey if player.jersey else 'N/A' }}</p>
+    <p><span class="label">Nickname:</span> {{ player.nickname if player.nickname else 'N/A' }}</p>
+    <p><span class="label">Weight:</span> {{ player.weight }}</p>
+    <a href="{{ url_for('career_stats', player_id=player.id) }}" class="button">View Career Stats</a>
+    <br>
+    <a href="{{ url_for('players') }}" class="button">Back to Players List</a>
+</body>
+</html>

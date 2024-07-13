@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Player Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .download-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .download-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<a href="{{ url_for('welcome') }}" class="button">Back to Homepage</a>
+    <h1>Download Player Database</h1>
+    <div class="download-options">
+        <a href="{{ url_for('download_excel') }}"><button class="download-button">Download Excel</button></a>
+        <a href="{{ url_for('download_csv') }}"><button class="download-button">Download CSV</button></a>
+        <a href="{{ url_for('api_json') }}"><button class="download-button">View JSON (API)</button></a>
+    </div>
+</body>
+</html>
