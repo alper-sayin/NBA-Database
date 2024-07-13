@@ -57,7 +57,7 @@ But between seeding the database and updating database models, you should apply:
 - `flask upgrade`
 
 to update the current database. That's why I used flask-migrate package in this project. But you don't need to use these flask CLI commands in final code in order to test out current functionality. If you want to extend current database <b><u>after creation</u></b> then you should apply these flask CLI commands.
-
+<b><u>This text is bold and underlined</u></b>
 ## Usage & Screenshots
 ![Description](images/welcome.PNG)
 Homepage
