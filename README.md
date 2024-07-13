@@ -28,10 +28,10 @@ Python, Flask, SQLAlchemy, Plotly, NBA API, HTML, CSS, JavaScript, SQLite. (You 
 
 ## Project Structure
 
-- Models: SQL Alchemy Database Models - Between lines of 235 and 295 in app.py
+- Models: SQL Alchemy Database Models - Between lines of 243 and 304 in app.py
 - Views: HTML files in templates folder
-- Controllers: Flask routes - Between lines of 102-232 in app.py
-- CLI Commands: Custom Flask CLI commands for database operations and data fetching - Between lines of 27-100 in app.py
+- Controllers: Flask Routes - Between lines of 111-238 in app.py
+- CLI Commands: Custom Flask CLI commands for database operations and data fetching - Between lines of 29-106 in app.py
 
 ## Installation & Setup
 
