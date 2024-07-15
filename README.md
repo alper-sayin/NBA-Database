@@ -24,7 +24,7 @@ NBA Database is a mini framework that fetches information from different endpoin
 
 ## Technologies Used
 
-Python, Flask, SQLAlchemy, Plotly, NBA API, HTML, CSS, JavaScript, SQLite. (You can browse requirements.txt for details)
+Python, Flask, SQLAlchemy, Plotly, NBA API, HTML, CSS, JavaScript, SQLite. (You can browse [requirements.txt](requirements.txt) for details)
 
 ## Project Structure
 
