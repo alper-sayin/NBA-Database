@@ -28,10 +28,10 @@ Python, Flask, SQLAlchemy, Plotly, NBA API, HTML, CSS, JavaScript, SQLite. (You 
 
 ## Project Structure
 
-- Models: SQL Alchemy Database Models - Between lines of 243 and 304 in app.py
+- Models: SQL Alchemy Database Models - databasemodels.py
 - Views: HTML files in templates folder
-- Controllers: Flask Routes - Between lines of 111-238 in app.py
-- CLI Commands: Custom Flask CLI commands for database operations and data fetching - Between lines of 29-106 in app.py
+- Controllers: Flask Routes - Between lines of 109-236 in app.py
+- CLI Commands: Custom Flask CLI commands for database operations and data fetching - Between lines of 27-104 in app.py
 
 ## Installation & Setup
 
@@ -52,9 +52,9 @@ After opening the terminal in your IDE, you should apply:
 Also you may want to add more columns of the current players or teams tables after the initial database creation. In this case, you should update database models in code snippet and then you should create other flask CLI commands for seeding the database.
 
 But between seeding the database and updating database models, you should apply:
-
-- `flask migrate`
-- `flask upgrade`
+- `flask db init`
+- `flask db migrate`
+- `flask db upgrade`
 
 to update the current database. That's why I used flask-migrate package in this project. But you don't need to use these flask CLI commands in final code in order to test out current functionality. If you want to add more columns or add more tables to current database **___after creation___** then you should apply these flask CLI commands.
 
