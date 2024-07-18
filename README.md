@@ -35,7 +35,7 @@ Python, Flask, SQLAlchemy, Plotly, NBA API, HTML, CSS, JavaScript, SQLite. (You 
 
 ## Installation & Setup
 
-After obtaining the files in repository or [cloning the repository](git clone https://github.com/Dilettanteczar/NBA-Database.git) to desired folder, setting up virtual environment and satisfying the requirements [requirements.txt](requirements.txt), you should run flask CLI commands in your terminal to create then update the database (Database will be automatically created in your project folder directory)
+After obtaining the files in repository or [cloning the repository](git clone https://github.com/alper-sayin/NBA-Database.git) to desired folder, setting up virtual environment and satisfying the requirements [requirements.txt](requirements.txt), you should run flask CLI commands in your terminal to create then update the database (Database will be automatically created in your project folder directory)
 
 After opening the terminal in your IDE, you should apply:
 
